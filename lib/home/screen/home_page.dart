@@ -58,6 +58,15 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: AppColors.appBarBackgroundColor,
+        tooltip: 'Add new Task',
+        child: const Icon(
+          Icons.add,
+          color: AppColors.color4,
+        ),
+      ),
     );
   }
 }
