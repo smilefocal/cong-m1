@@ -1,6 +1,7 @@
 import 'package:congraph/styles/app_colors.dart';
 import 'package:congraph/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PaintClockModule extends StatelessWidget {
   const PaintClockModule({Key? key}) : super(key: key);
@@ -8,14 +9,30 @@ class PaintClockModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.color4,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColors.appBarBackgroundColor,
-        centerTitle: true,
-        title: const Text(
+        // centerTitle: true,
+        title: const SelectableText(
           'Congraphs',
           style: AppTextStyles.appBarTextStyle,
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const FaIcon(FontAwesomeIcons.circleInfo),
+            tooltip: 'Info',
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const FaIcon(FontAwesomeIcons.github),
+            tooltip: 'Source code',
+          )
+        ],
       ),
       body: CustomPaint(
         painter: ActuallyDrawClock(),

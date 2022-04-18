@@ -24,7 +24,7 @@ class AuthenticationButtonsModule extends StatelessWidget {
                   FontAwesomeIcons.google,
                   color: AppButtonStyles.iconTheme,
                 ),
-                label: const Text(''),
+                label: const Text('Continue with Google'),
               ),
             ),
             const SizedBox(
@@ -39,7 +39,7 @@ class AuthenticationButtonsModule extends StatelessWidget {
                   FontAwesomeIcons.twitter,
                   color: AppButtonStyles.iconTheme,
                 ),
-                label: const Text(''),
+                label: const Text('Continue with Twitter'),
               ),
             ),
             Padding(
