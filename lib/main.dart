@@ -1,4 +1,4 @@
-import 'package:congraph/error/screen/navigation_error_page.dart';
+import 'package:congraph/route_generator.dart';
 import 'package:congraph/styles/app_button_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -13,12 +13,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generateRoute,
       theme: ThemeData(
         elevatedButtonTheme: AppButtonStyles().elevatedButtonTheme,
         textButtonTheme: AppButtonStyles().textButtonTheme,
         fontFamily: 'Ubuntu',
       ),
-      home: const NavigationErrorPage(),
     );
   }
 }
