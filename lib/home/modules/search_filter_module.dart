@@ -14,11 +14,6 @@ class SearchFilterModule extends StatelessWidget {
           width: MediaQuery.of(context).size.width / 2,
           child: TextFormField(
             decoration: const InputDecoration(
-              // enabledBorder: OutlineInputBorder(
-              //   borderSide: BorderSide(
-              //     color: AppColors.color2,
-              //   ),
-              // ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(30.0),

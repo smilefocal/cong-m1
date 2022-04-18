@@ -1,4 +1,4 @@
-import 'package:congraph/home/screen/home_page.dart';
+import 'package:congraph/authentication/screen/authentication_page.dart';
 import 'package:congraph/styles/app_button_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         textButtonTheme: AppButtonStyles().textButtonTheme,
         fontFamily: 'Ubuntu',
       ),
-      home: const HomePage(),
+      home: const AuthenticationPage(),
     );
   }
 }
