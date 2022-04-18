@@ -1,3 +1,4 @@
+import 'package:congraph/styles/app_button_styles.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +10,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp();
+    return MaterialApp(
+      theme: ThemeData(
+        elevatedButtonTheme: AppButtonStyles().elevatedButtonTheme,
+        textButtonTheme: AppButtonStyles().textButtonTheme,
+      ),
+    );
   }
 }
