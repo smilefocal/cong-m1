@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         elevatedButtonTheme: AppButtonStyles().elevatedButtonTheme,
         textButtonTheme: AppButtonStyles().textButtonTheme,
+        fontFamily: 'Ubuntu',
       ),
       home: const AuthenticationPage(),
     );
