@@ -1,3 +1,6 @@
+import 'package:congraph/home/modules/floating_button_module.dart';
+import 'package:congraph/home/modules/search_filter_module.dart';
+import 'package:congraph/home/modules/task_module.dart';
 import 'package:congraph/styles/app_button_styles.dart';
 import 'package:congraph/styles/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.color4,
       appBar: AppBar(
         title: Row(
           children: const [
@@ -58,13 +62,25 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: AppColors.appBarBackgroundColor,
-        tooltip: 'Add new Task',
-        child: const Icon(
-          Icons.add,
-          color: AppColors.color4,
+      floatingActionButton: const FloatingButtonModule(),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics(),
+          ),
+          children: const [
+            SearchFilterModule(),
+            SizedBox(
+              height: 10,
+            ),
+            TaskModule(),
+            SizedBox(
+              height: 10,
+            ),
+            TaskModule(),
+          ],
         ),
       ),
     );
