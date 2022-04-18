@@ -14,11 +14,11 @@ class AppButtonStyles {
     ),
   );
 
-  final elevatedButtonStyle = ButtonStyle(
+  static final ButtonStyle elevatedButtonStyle = ButtonStyle(
     backgroundColor: MaterialStateProperty.all<Color>(
       AppColors.color2,
     ),
   );
 
-  final iconTheme = AppColors.color4;
+  static const iconTheme = AppColors.color4;
 }

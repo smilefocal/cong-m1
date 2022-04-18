@@ -1,3 +1,4 @@
+import 'package:congraph/styles/app_button_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -18,12 +19,11 @@ class AuthenticationButtonsModule extends StatelessWidget {
               height: 60,
               child: ElevatedButton.icon(
                 onPressed: () {},
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color.fromRGBO(38, 63, 68, 1.0),
-                  ),
+                style: AppButtonStyles.elevatedButtonStyle,
+                icon: const FaIcon(
+                  FontAwesomeIcons.google,
+                  color: AppButtonStyles.iconTheme,
                 ),
-                icon: const FaIcon(FontAwesomeIcons.google),
                 label: const Text(''),
               ),
             ),
@@ -34,12 +34,11 @@ class AuthenticationButtonsModule extends StatelessWidget {
               height: 60,
               child: ElevatedButton.icon(
                 onPressed: () {},
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color.fromRGBO(38, 63, 68, 1.0),
-                  ),
+                style: AppButtonStyles.elevatedButtonStyle,
+                icon: const FaIcon(
+                  FontAwesomeIcons.twitter,
+                  color: AppButtonStyles.iconTheme,
                 ),
-                icon: const FaIcon(FontAwesomeIcons.twitter),
                 label: const Text(''),
               ),
             ),
