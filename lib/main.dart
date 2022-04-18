@@ -1,3 +1,4 @@
+import 'package:congraph/authentication/screen/authentication_page.dart';
 import 'package:congraph/styles/app_button_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
         elevatedButtonTheme: AppButtonStyles().elevatedButtonTheme,
         textButtonTheme: AppButtonStyles().textButtonTheme,
       ),
+      home: const AuthenticationPage(),
     );
   }
 }
