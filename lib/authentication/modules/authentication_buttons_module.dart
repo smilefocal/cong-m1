@@ -1,3 +1,4 @@
+import 'package:congraph/authentication/cubit/google_authentication.dart';
 import 'package:congraph/styles/app_button_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,7 +19,13 @@ class AuthenticationButtonsModule extends StatelessWidget {
             SizedBox(
               height: 60,
               child: ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () async {
+                  await GoogleAuthentication()
+                      .signInWithGoogle()
+                      .whenComplete(() {
+                    Navigator.of(context).pushReplacementNamed('/home');
+                  });
+                },
                 style: AppButtonStyles.elevatedButtonStyle,
                 icon: const FaIcon(
                   FontAwesomeIcons.google,
