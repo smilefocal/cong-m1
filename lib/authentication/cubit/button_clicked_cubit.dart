@@ -11,10 +11,3 @@ class TwitterCubit extends Cubit<bool> {
   twitterBtnClicked() => emit(true);
   resetTwitterBtn() => emit(false);
 }
-
-class ButtonClickedNetworkConnection extends Cubit<bool> {
-  ButtonClickedNetworkConnection() : super(false);
-
-  networkDown() => emit(true);
-  networkUp() => emit(false);
-}

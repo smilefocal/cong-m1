@@ -6,4 +6,9 @@ class AppTextStyles {
     fontSize: 30,
     color: AppColors.color3,
   );
+
+  static const errorTextStyle = TextStyle(
+    fontSize: 25,
+    color: AppColors.color1,
+  );
 }
