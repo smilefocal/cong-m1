@@ -19,17 +19,16 @@ class AuthenticationButtonsModule extends StatelessWidget {
     final sized = MediaQuery.of(context).size.width / 2;
     late User? user;
 
-    //initialize a timer when a button is pressed, then call a function
-    //to reset the button states.
-    late Timer _timer;
+    //reset the button states.
     resetButtonStates() {
       context.read<GoogleCubit>().resetGoogleBtn();
       context.read<TwitterCubit>().resetTwitterBtn();
     }
 
+    //this timer switches between loading and button display.
     void startTimer() {
       const oneSec = Duration(seconds: 1);
-      _timer = Timer.periodic(
+      Timer.periodic(
         oneSec,
         (Timer timer) {
           if (context.read<TimerCubit>().state == 0) {
