@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:congraph/authentication/cubit/button_clicked_cubit.dart';
 import 'package:congraph/authentication/cubit/google_authentication.dart';
 import 'package:congraph/styles/app_button_styles.dart';
 import 'package:congraph/styles/app_colors.dart';
+import 'package:congraph/timer/cubits/timer_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +18,30 @@ class AuthenticationButtonsModule extends StatelessWidget {
   Widget build(BuildContext context) {
     final sized = MediaQuery.of(context).size.width / 2;
     late User? user;
+
+    //initialize a timer when a button is pressed, then call a function
+    //to reset the button states.
+    late Timer _timer;
+    resetButtonStates() {
+      context.read<GoogleCubit>().resetGoogleBtn();
+      context.read<TwitterCubit>().resetTwitterBtn();
+    }
+
+    void startTimer() {
+      const oneSec = Duration(seconds: 1);
+      _timer = Timer.periodic(
+        oneSec,
+        (Timer timer) {
+          if (context.read<TimerCubit>().state == 0) {
+            resetButtonStates();
+            context.read<TimerCubit>().resetTimer();
+          } else {
+            context.read<TimerCubit>().decrementTimer();
+          }
+        },
+      );
+    }
+
     return Center(
       child: Padding(
         padding: EdgeInsets.only(right: sized, left: 10, top: 0),
@@ -35,6 +62,7 @@ class AuthenticationButtonsModule extends StatelessWidget {
                                       context
                                           .read<GoogleCubit>()
                                           .googleBtnClicked();
+                                      startTimer();
                                       await GoogleAuthentication()
                                           .signInWithGoogle();
                                     }
@@ -60,6 +88,7 @@ class AuthenticationButtonsModule extends StatelessWidget {
                                       context
                                           .read<TwitterCubit>()
                                           .twitterBtnClicked();
+                                      startTimer();
                                     }
                                   : null,
                               style: AppButtonStyles.elevatedButtonStyle,
