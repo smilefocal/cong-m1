@@ -2,6 +2,7 @@ import 'package:congraph/authentication/cubit/button_clicked_cubit.dart';
 import 'package:congraph/authentication/cubit/google_authentication.dart';
 import 'package:congraph/styles/app_button_styles.dart';
 import 'package:congraph/styles/app_colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -13,6 +14,7 @@ class AuthenticationButtonsModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sized = MediaQuery.of(context).size.width / 2;
+    late User? user;
     return Center(
       child: Padding(
         padding: EdgeInsets.only(right: sized, left: 10, top: 0),
@@ -28,15 +30,15 @@ class AuthenticationButtonsModule extends StatelessWidget {
                       height: 60,
                       child: googleState == false
                           ? ElevatedButton.icon(
-                              onPressed: () async {
-                                context.read<GoogleCubit>().googleBtnClicked();
-                                await GoogleAuthentication()
-                                    .signInWithGoogle()
-                                    .whenComplete(() {
-                                  Navigator.of(context)
-                                      .pushReplacementNamed('/home');
-                                });
-                              },
+                              onPressed: twitterState == false
+                                  ? () async {
+                                      context
+                                          .read<GoogleCubit>()
+                                          .googleBtnClicked();
+                                      await GoogleAuthentication()
+                                          .signInWithGoogle();
+                                    }
+                                  : null,
                               style: AppButtonStyles.elevatedButtonStyle,
                               icon: const FaIcon(
                                 FontAwesomeIcons.google,
@@ -53,11 +55,13 @@ class AuthenticationButtonsModule extends StatelessWidget {
                       height: 60,
                       child: twitterState == false
                           ? ElevatedButton.icon(
-                              onPressed: () {
-                                context
-                                    .read<TwitterCubit>()
-                                    .twitterBtnClicked();
-                              },
+                              onPressed: googleState == false
+                                  ? () {
+                                      context
+                                          .read<TwitterCubit>()
+                                          .twitterBtnClicked();
+                                    }
+                                  : null,
                               style: AppButtonStyles.elevatedButtonStyle,
                               icon: const FaIcon(
                                 FontAwesomeIcons.twitter,
