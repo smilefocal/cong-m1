@@ -2,13 +2,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GoogleCubit extends Cubit<bool> {
   GoogleCubit() : super(false);
-  isGoogleBtnClicked() => emit(true);
+  googleBtnClicked() => emit(true);
   resetGoogleBtn() => emit(false);
 }
 
 class TwitterCubit extends Cubit<bool> {
   TwitterCubit() : super(false);
-  isTwitterBtnClicked() => emit(true);
+  twitterBtnClicked() => emit(true);
   resetTwitterBtn() => emit(false);
 }
 

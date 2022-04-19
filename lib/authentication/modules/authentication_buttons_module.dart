@@ -29,6 +29,7 @@ class AuthenticationButtonsModule extends StatelessWidget {
                       child: googleState == false
                           ? ElevatedButton.icon(
                               onPressed: () async {
+                                context.read<GoogleCubit>().googleBtnClicked();
                                 await GoogleAuthentication()
                                     .signInWithGoogle()
                                     .whenComplete(() {
@@ -52,7 +53,11 @@ class AuthenticationButtonsModule extends StatelessWidget {
                       height: 60,
                       child: twitterState == false
                           ? ElevatedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                context
+                                    .read<TwitterCubit>()
+                                    .twitterBtnClicked();
+                              },
                               style: AppButtonStyles.elevatedButtonStyle,
                               icon: const FaIcon(
                                 FontAwesomeIcons.twitter,
