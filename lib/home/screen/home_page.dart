@@ -19,16 +19,6 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            CircleAvatar(
-              backgroundColor: AppColors.appBarBackgroundColor,
-              child: Image.network(
-                user.photoURL!,
-                color: AppColors.appBarBackgroundColor,
-              ),
-            ),
-            const SizedBox(
-              width: 5,
-            ),
             SelectableText(
               'Good morning, ${user.displayName}',
               style: const TextStyle(color: AppColors.color3),

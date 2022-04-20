@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:congraph/authentication/cubit/button_clicked_cubit.dart';
 import 'package:congraph/authentication/cubit/google_authentication.dart';
+import 'package:congraph/authentication/cubit/twitter_authentication.dart';
 import 'package:congraph/styles/app_button_styles.dart';
 import 'package:congraph/styles/app_colors.dart';
 import 'package:congraph/timer/cubits/timer_cubit.dart';
@@ -62,8 +63,16 @@ class AuthenticationButtonsModule extends StatelessWidget {
                                           .read<GoogleCubit>()
                                           .googleBtnClicked();
                                       startTimer();
-                                      await GoogleAuthentication()
-                                          .signInWithGoogle();
+                                      user = await GoogleAuthentication()
+                                          .signInWithGoogle()
+                                          .then((value) {
+                                        Navigator.of(context)
+                                            .pushReplacementNamed(
+                                          '/home',
+                                          arguments: value,
+                                        );
+                                        return null;
+                                      });
                                     }
                                   : null,
                               style: AppButtonStyles.elevatedButtonStyle,
@@ -83,19 +92,21 @@ class AuthenticationButtonsModule extends StatelessWidget {
                       child: twitterState == false
                           ? ElevatedButton.icon(
                               onPressed: googleState == false
-                                  ? () {
+                                  ? () async {
                                       context
                                           .read<TwitterCubit>()
                                           .twitterBtnClicked();
                                       startTimer();
+                                      await TwitterAuthentication()
+                                          .signInTwitterWithRedirect();
                                     }
                                   : null,
                               style: AppButtonStyles.elevatedButtonStyle,
                               icon: const FaIcon(
-                                FontAwesomeIcons.twitter,
+                                FontAwesomeIcons.mugSaucer,
                                 color: AppButtonStyles.iconTheme,
                               ),
-                              label: const Text('Continue with Twitter'),
+                              label: const Text('Buy creators coffee'),
                             )
                           : const LoadingSpinWidget(),
                     ),
