@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:congraph/authentication/cubit/button_clicked_cubit.dart';
+import 'package:congraph/authentication/cubit/buy_me_coffee.dart';
 import 'package:congraph/authentication/cubit/google_authentication.dart';
-import 'package:congraph/authentication/cubit/twitter_authentication.dart';
 import 'package:congraph/styles/app_button_styles.dart';
 import 'package:congraph/styles/app_colors.dart';
 import 'package:congraph/timer/cubits/timer_cubit.dart';
@@ -97,16 +97,15 @@ class AuthenticationButtonsModule extends StatelessWidget {
                                           .read<TwitterCubit>()
                                           .twitterBtnClicked();
                                       startTimer();
-                                      await TwitterAuthentication()
-                                          .signInTwitterWithRedirect();
+                                      await BuyMeCoffee().buyCoffee();
                                     }
                                   : null,
                               style: AppButtonStyles.elevatedButtonStyle,
                               icon: const FaIcon(
-                                FontAwesomeIcons.mugSaucer,
+                                FontAwesomeIcons.mugHot,
                                 color: AppButtonStyles.iconTheme,
                               ),
-                              label: const Text('Buy creators coffee'),
+                              label: const Text('Buy me a coffee'),
                             )
                           : const LoadingSpinWidget(),
                     ),
