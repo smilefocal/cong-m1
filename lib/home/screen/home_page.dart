@@ -3,14 +3,14 @@ import 'package:congraph/home/modules/search_filter_module.dart';
 import 'package:congraph/home/modules/task_module.dart';
 import 'package:congraph/styles/app_button_styles.dart';
 import 'package:congraph/styles/app_colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatelessWidget {
-  // const HomePage({Key? key, required this.user}) : super(key: key);
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key, required this.user}) : super(key: key);
 
-  // final User user;
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,7 @@ class HomePage extends StatelessWidget {
         title: Row(
           children: [
             SelectableText(
-              // 'Good morning, ${user.displayName}',
-              'Good morning, "{user.displayName}"',
+              'Good morning, ${user.displayName}',
               style: const TextStyle(color: AppColors.color3),
             ),
           ],

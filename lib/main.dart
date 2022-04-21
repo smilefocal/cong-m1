@@ -30,7 +30,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Future getUserInfo() async {
     await GoogleAuthentication().getUser().then(
-          (value) => Navigator.of(context).pushReplacementNamed(
+          (value) => Navigator.of(context).pushNamed(
             '/home',
             arguments: value,
           ),
@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
       theme: ThemeData(
         elevatedButtonTheme: AppButtonStyles().elevatedButtonTheme,
