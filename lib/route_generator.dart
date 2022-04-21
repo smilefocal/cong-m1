@@ -1,6 +1,7 @@
 import 'package:congraph/authentication/cubit/button_clicked_cubit.dart';
 import 'package:congraph/authentication/screen/authentication_page.dart';
 import 'package:congraph/error/screen/navigation_error_page.dart';
+import 'package:congraph/home/cubit/floating_button_module_cubit.dart';
 import 'package:congraph/home/screen/home_page.dart';
 import 'package:congraph/styles/app_colors.dart';
 import 'package:congraph/styles/app_text_styles.dart';
@@ -35,7 +36,14 @@ class RouteGenerator {
       case '/home':
         if (args is User) {
           return MaterialPageRoute(
-            builder: (_) => HomePage(user: args),
+            builder: (_) => MultiBlocProvider(
+              providers: [
+                BlocProvider<FloatingButtonModuleCubit>(
+                  create: (BuildContext context) => FloatingButtonModuleCubit(),
+                ),
+              ],
+              child: HomePage(user: args),
+            ),
           );
         }
         return _errorRoute();
