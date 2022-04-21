@@ -5,7 +5,6 @@ import 'package:congraph/home/screen/home_page.dart';
 import 'package:congraph/styles/app_colors.dart';
 import 'package:congraph/styles/app_text_styles.dart';
 import 'package:congraph/timer/cubits/timer_cubit.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,11 +32,12 @@ class RouteGenerator {
           ),
         );
       case '/home':
-        if (args is User) {
-          return MaterialPageRoute(
-            builder: (_) => HomePage(user: args),
-          );
-        }
+        // if (args is User) {
+        return MaterialPageRoute(
+          // builder: (_) => HomePage(user: args),
+          builder: (_) => const HomePage(),
+        );
+        // }
         return _errorRoute();
       default:
         return MaterialPageRoute(

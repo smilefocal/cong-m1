@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/home',
       onGenerateRoute: RouteGenerator.generateRoute,
       theme: ThemeData(
         elevatedButtonTheme: AppButtonStyles().elevatedButtonTheme,
