@@ -1,7 +1,11 @@
+import 'package:congraph/home/cubit/switch_control_cubit.dart';
 import 'package:congraph/home/modules/task_module.dart';
 import 'package:congraph/styles/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../cubit/congraphs_switch_cubit.dart';
 
 class FloatingButtonModule extends StatelessWidget {
   const FloatingButtonModule({Key? key}) : super(key: key);
@@ -15,14 +19,20 @@ class FloatingButtonModule extends StatelessWidget {
             backgroundColor: AppColors.color4,
             elevation: 3.0,
             content: Column(
-              children: const [
-                AddNewTaskTextField(),
-                _PageSpacing(),
-                AddNumberOfMonthsTextField(),
-                _PageSpacing(),
-                DisableDeleteSwitch(),
-                _PageSpacing(),
-                DisableCongraphSwitch(),
+              children: [
+                const AddNewTaskTextField(),
+                const _PageSpacing(),
+                const AddNumberOfMonthsTextField(),
+                const _PageSpacing(),
+                BlocProvider(
+                  create: (context) => SwitchControlCubit(),
+                  child: const DisableDeleteSwitch(),
+                ),
+                const _PageSpacing(),
+                BlocProvider(
+                  create: (context) => CongraphsSwitchCubit(),
+                  child: const DisableCongraphSwitch(),
+                ),
               ],
             ),
             actions: [
@@ -95,11 +105,23 @@ class DisableDeleteSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: const Text('Disable Delete?'),
-      subtitle:
-          const Text('Hooray! Task will not be deleted until period is over!'),
-      trailing: Switch(value: false, onChanged: (val) {}),
+    return BlocBuilder<SwitchControlCubit, bool>(
+      builder: (context, state) {
+        return ListTile(
+          title: const Text('Disable Delete?'),
+          subtitle:
+              const Text('Task will not be deleted until period is over!'),
+          trailing: Switch(
+              value: context.read<SwitchControlCubit>().state,
+              onChanged: (val) {
+                if (val == true) {
+                  context.read<SwitchControlCubit>().activateSwitch();
+                } else {
+                  context.read<SwitchControlCubit>().deactivateSwitch();
+                }
+              }),
+        );
+      },
     );
   }
 }
@@ -110,11 +132,25 @@ class DisableCongraphSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: const Text('Congraphs'),
-      subtitle: const Text(
-          'A special congraph art will be created for you when you complete this task!'),
-      trailing: Switch(value: true, onChanged: (val) {}),
+    return BlocBuilder<CongraphsSwitchCubit, bool>(
+      builder: (context, state) {
+        return ListTile(
+          title: const Text('Congraphs'),
+          subtitle: const Text(
+            'A special congraph art will be created for you when you complete this task!',
+          ),
+          trailing: Switch(
+            value: context.read<CongraphsSwitchCubit>().state,
+            onChanged: (val) {
+              if (val == true) {
+                context.read<CongraphsSwitchCubit>().generateCongraph();
+              } else {
+                context.read<CongraphsSwitchCubit>().disableCongraph();
+              }
+            },
+          ),
+        );
+      },
     );
   }
 }
