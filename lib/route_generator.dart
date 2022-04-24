@@ -38,8 +38,8 @@ class RouteGenerator {
           return MaterialPageRoute(
             builder: (_) => MultiBlocProvider(
               providers: [
-                BlocProvider<FloatingButtonModuleCubit>(
-                  create: (BuildContext context) => FloatingButtonModuleCubit(),
+                BlocProvider<SwitchControlCubit>(
+                  create: (BuildContext context) => SwitchControlCubit(),
                 ),
               ],
               child: HomePage(user: args),
