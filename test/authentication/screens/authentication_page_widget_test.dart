@@ -6,7 +6,6 @@ void main() {
   testWidgets('authentication buttons module', (widgetTester) async {
     //find the widgets in the file
     final googleAuthenticationBtn = find.byKey(const ValueKey('googleAuthBtn'));
-    final buyMeaCoffeeBtn = find.byKey(const ValueKey('buyCoffeeBtn'));
 
     //actual test
     await widgetTester.pumpWidget(const MaterialApp(

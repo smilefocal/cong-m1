@@ -21,7 +21,7 @@ class GoogleAuthentication {
         prefs.setBool('auth', true);
       }
     } catch (e) {
-      print(e);
+      rethrow;
     }
     return user;
   }
