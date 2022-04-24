@@ -80,6 +80,7 @@ class AuthenticationButtonsModule extends StatelessWidget {
                                 FontAwesomeIcons.google,
                                 color: AppButtonStyles.iconTheme,
                               ),
+                              key: const ValueKey('googleAuthBtn'),
                               label: const Text('Continue with Google'),
                             )
                           : const LoadingSpinWidget(),
@@ -105,6 +106,7 @@ class AuthenticationButtonsModule extends StatelessWidget {
                                 FontAwesomeIcons.mugHot,
                                 color: AppButtonStyles.iconTheme,
                               ),
+                              key: const ValueKey('buyCoffeeBtn'),
                               label: const Text('Buy me a coffee'),
                             )
                           : const LoadingSpinWidget(),

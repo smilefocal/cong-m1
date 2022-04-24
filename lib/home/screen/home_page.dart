@@ -1,3 +1,4 @@
+import 'package:congraph/home/cubit/floating_button_module_cubit.dart';
 import 'package:congraph/home/modules/floating_button_module.dart';
 import 'package:congraph/home/modules/search_filter_module.dart';
 import 'package:congraph/home/modules/task_module.dart';
@@ -5,6 +6,7 @@ import 'package:congraph/styles/app_button_styles.dart';
 import 'package:congraph/styles/app_colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatelessWidget {
@@ -59,7 +61,10 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: const FloatingButtonModule(),
+      floatingActionButton: BlocProvider(
+        create: (context) => FloatingButtonModuleCubit(),
+        child: const FloatingButtonModule(),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(

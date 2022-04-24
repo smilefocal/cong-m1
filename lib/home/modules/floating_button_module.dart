@@ -56,6 +56,7 @@ class FloatingButtonModule extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   FloatingActionButton(
+                    heroTag: 'cancelTask',
                     mini: true,
                     backgroundColor: AppColors.color1,
                     tooltip: 'Cancel',
@@ -67,6 +68,7 @@ class FloatingButtonModule extends StatelessWidget {
                   ),
                   const ContainerChain(),
                   FloatingActionButton(
+                    heroTag: 'addTask',
                     mini: true,
                     backgroundColor: AppColors.color1,
                     tooltip: 'Add',
@@ -86,6 +88,7 @@ class FloatingButtonModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
+      heroTag: 'newTask',
       onPressed: () {
         _showMaterialDialog(context);
       },

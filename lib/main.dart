@@ -1,4 +1,3 @@
-import 'package:congraph/authentication/cubit/google_authentication.dart';
 import 'package:congraph/route_generator.dart';
 import 'package:congraph/styles/app_button_styles.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,30 +19,8 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  Future getUserInfo() async {
-    await GoogleAuthentication().getUser().then(
-          (value) => Navigator.of(context).pushNamed(
-            '/home',
-            arguments: value,
-          ),
-        );
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    getUserInfo();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
