@@ -1,4 +1,4 @@
-# congraph
+# con graphs
 
 A new Flutter project.
 
